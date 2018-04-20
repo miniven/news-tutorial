@@ -1,0 +1,21 @@
+.nav {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+}
+
+.nav__list {
+  display: flex;
+}
+
+.nav__link {
+  display: block;
+  padding: 15px;
+  color: #000000;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.nav__link:hover,
+.nav__link:focus {
+  background-color: #F5F5F5;
+}

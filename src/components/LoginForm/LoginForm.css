@@ -1,0 +1,39 @@
+.form {
+  padding: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  border: 1px solid #F5F5F5;
+  box-shadow: 0 10px 35px -15px rgba(0, 0, 0, 0.2);
+}
+
+.form__input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 1em;
+  border: 2px solid #F5F5F5;
+}
+
+.form__input:focus {
+  border-color: #03a9f4;
+  outline: none;
+}
+
+.form__submit {
+  padding: 10px 30px;
+  color: #03a9f4;
+  font-size: 1em;
+  font-weight: 600;
+  background-color: transparent;
+  border: 2px solid #03a9f4;
+  cursor: pointer;
+}
+
+.form__submit:hover,
+.form__submit:focus {
+  color: #028ECD;
+  border-color: #028ECD;
+  outline: none;
+}
