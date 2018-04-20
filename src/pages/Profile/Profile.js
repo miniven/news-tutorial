@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Profile extends Component {
-  render() {
-    return (
-      <h1>Profile Page</h1>
-    );
-  }
-};
+// Components //
+
+import PageTitle from '../../components/PageTitle/PageTitle';
+
+const Profile = () => (
+  <section className='section'>
+    <PageTitle className='section__title'>Профиль</PageTitle>
+  </section>
+);
+
+export default Profile;

@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Home extends Component {
-  render() {
-    return (
-      <h1>Home Page</h1>
-    );
-  }
-};
+// Components //
+
+import PageTitle from '../../components/PageTitle/PageTitle';
+
+const Home = () => (
+  <section className='section'>
+    <PageTitle className='section__title'>Главная страница</PageTitle>
+  </section>
+);
+
+export default Home;

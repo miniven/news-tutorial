@@ -3,9 +3,11 @@ import { combineReducers } from 'redux';
 // Reducers //
 
 import userReducer from './userReducer';
+import newsReducer from './newsReducer';
 
 const rootReducer = combineReducers({
-  user: userReducer
+  user: userReducer,
+  news: newsReducer
 });
 
 export default rootReducer;
