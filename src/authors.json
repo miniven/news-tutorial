@@ -1,0 +1,10 @@
+{
+  "1": {
+    "name": "miniven",
+    "rights": "admin"
+  },
+  "2": {
+    "name": "somebody",
+    "rights": "user"
+  }
+}

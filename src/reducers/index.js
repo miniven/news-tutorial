@@ -4,10 +4,12 @@ import { combineReducers } from 'redux';
 
 import userReducer from './userReducer';
 import newsReducer from './newsReducer';
+import authorsReducer from './authorsReducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
-  news: newsReducer
+  news: newsReducer,
+  authors: authorsReducer
 });
 
 export default rootReducer;
