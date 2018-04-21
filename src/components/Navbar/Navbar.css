@@ -15,6 +15,10 @@
   text-decoration: none;
 }
 
+/*.nav__link.active {
+  background-color: #f5f5f5;
+}*/
+
 .nav__link:hover,
 .nav__link:focus {
   background-color: #F5F5F5;

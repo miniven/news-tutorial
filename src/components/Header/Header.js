@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './Header.css';
 
@@ -6,16 +6,12 @@ import './Header.css';
 
 import Navbar from '../Navbar/Navbar';
 
-class Header extends Component {
-  render() {
-    return (
-      <header className='header'>
-        <div className='container'>
-          <Navbar />
-        </div>
-      </header>
-    );
-  }
-};
+const Header = () => (
+  <header className='header'>
+    <div className='container'>
+      <Navbar />
+    </div>
+  </header>
+);
 
 export default Header;

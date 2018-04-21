@@ -1,19 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './Navbar.css';
 
-const Navbar = () => (
+// TODO: Должна быть активной только одна ссылка. Пока не получилось
+
+const Navbar = props => (
   <nav className='nav'>
     <ul className='nav__list'>
       <li className='nav__item'>
-        <Link className='nav__link' to='/'>На главную</Link>
+        <NavLink className='nav__link' to='/'>На главную</NavLink>
       </li>
       <li className='nav__item'>
-        <Link className='nav__link' to='/news'>Новости</Link>
+        <NavLink className='nav__link' to='/news'>Новости</NavLink>
       </li>
       <li className='nav__item'>
-        <Link className='nav__link' to='/profile'>Профиль</Link>
+        <NavLink className='nav__link' to='/profile'>Профиль</NavLink>
       </li>
     </ul>
   </nav>

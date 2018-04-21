@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // Pages //
@@ -11,20 +12,24 @@ import Profile from '../../pages/Profile/Profile';
 // Components //
 
 import Header from '../Header/Header';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
-const App = () => (
+const App = props => (
   <Router>
     <div>
       <Header />
-
       <div className='container'>
         <Route exact path='/' component={Home} />
         <Route path='/login' component={Login} />
         <Route path='/news' component={News} />
-        <Route path='/profile' component={Profile} />
+        <PrivateRoute path='/profile' component={Profile} authed={props.auth.username} />
       </div>
     </div>
   </Router>
 );
 
-export default App;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, null)(App);
