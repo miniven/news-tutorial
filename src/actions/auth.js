@@ -1,4 +1,4 @@
-import { LOG_IN, USER_LOGGED_IN } from '../types/auth';
+import { LOG_IN, LOG_OUT, USER_LOGGED_IN, USER_LOGGED_OUT } from '../types/auth';
 
 export const logIn = data => (
   {
@@ -7,9 +7,21 @@ export const logIn = data => (
   }
 );
 
+export const logOut = () => (
+  {
+    type: LOG_OUT
+  }
+);
+
 export const userLoggedIn = data => (
   {
     type: USER_LOGGED_IN,
     data
+  }
+);
+
+export const userLoggedOut = () => (
+  {
+    type: USER_LOGGED_OUT
   }
 );

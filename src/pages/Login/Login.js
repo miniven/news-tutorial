@@ -12,7 +12,7 @@ export default class Login extends Component {
         <PageTitle className='section__title'>Login Page</PageTitle>
         <div className='row center-xs'>
           <div className='col-xs-12 col-sm-6 col-md-4'>
-            <LoginForm className='section__form' />
+            <LoginForm className='section__form' {...this.props}/>
           </div>
         </div>
       </section>

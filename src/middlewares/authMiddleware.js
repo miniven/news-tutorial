@@ -1,8 +1,8 @@
-import { LOG_IN } from '../types/auth';
+import { LOG_IN, LOG_OUT } from '../types/auth';
 
 // Actions //
 
-import { userLoggedIn } from '../actions/auth';
+import { userLoggedIn, userLoggedOut } from '../actions/auth';
 
 const authData = {
   username: 'Admin',
@@ -26,6 +26,11 @@ const authMiddleware = store => next => action => {
         errors: ['Логин или пароль введены некорректно']
       };
     }
+  }
+
+  if (action.type === LOG_OUT) {
+    store.dispatch(userLoggedOut());
+    localStorage.removeItem('auth');
   }
 
   next(action);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Pages //
 
@@ -18,11 +18,13 @@ const App = props => (
   <Router>
     <div>
       <Header />
-      <div className='container'>
-        <Route exact path='/' component={Home} />
-        <Route path='/login' component={Login} />
-        <Route path='/news' component={News} />
-        <PrivateRoute path='/profile' component={Profile} authed={props.auth.username} />
+      <div className="container">
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/login' component={Login} />
+          <Route path='/news' component={News} />
+          <PrivateRoute path='/profile' component={Profile} authed={props.auth.username} />
+        </Switch>
       </div>
     </div>
   </Router>

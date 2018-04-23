@@ -1,24 +1,46 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { NavLink, withRouter } from 'react-router-dom';
 
 import './Navbar.css';
 
-// TODO: Должна быть активной только одна ссылка. Пока не получилось
+// Actions
 
-const Navbar = props => (
-  <nav className='nav'>
-    <ul className='nav__list'>
-      <li className='nav__item'>
-        <NavLink className='nav__link' to='/'>На главную</NavLink>
-      </li>
-      <li className='nav__item'>
-        <NavLink className='nav__link' to='/news'>Новости</NavLink>
-      </li>
-      <li className='nav__item'>
-        <NavLink className='nav__link' to='/profile'>Профиль</NavLink>
-      </li>
-    </ul>
-  </nav>
-);
+import { logOut } from '../../actions/auth';
 
-export default Navbar;
+class Navbar extends Component {
+  logOut = () => {
+    this.props.logOut();
+  }
+
+  render() {
+    return (
+      <nav className='nav'>
+        <ul className='nav__list'>
+          <li className='nav__item'>
+            <NavLink className='nav__link' activeClassName='nav__link--active' exact to='/'>На главную</NavLink>
+          </li>
+          <li className='nav__item'>
+            <NavLink className='nav__link' activeClassName='nav__link--active' exact to='/news'>Новости</NavLink>
+          </li>
+          <li className='nav__item'>
+            <NavLink className='nav__link' activeClassName='nav__link--active' exact to='/profile'>Профиль</NavLink>
+          </li>
+          {
+            this.props.auth.username && (
+              <li className='nav__item nav__item--last'>
+                <button className='button' onClick={this.logOut}>Выйти</button>
+              </li>
+            )
+          }
+        </ul>
+      </nav>
+    );
+  }
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default withRouter(connect(mapStateToProps, { logOut })(Navbar));

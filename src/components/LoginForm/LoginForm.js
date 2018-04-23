@@ -7,8 +7,6 @@ import './LoginForm.css';
 
 import { logIn } from '../../actions/auth';
 
-// TODO: Редирект на /profile после успешной авторизации
-
 class LoginForm extends Component {
   state = {
     data: {
@@ -36,6 +34,7 @@ class LoginForm extends Component {
       this.setState({
         errors: []
       });
+      this.props.history.push('/profile');
 
       return;
     }
