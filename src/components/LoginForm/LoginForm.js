@@ -13,6 +13,7 @@ class LoginForm extends Component {
       username: '',
       password: ''
     },
+    fetching: false,
     errors: []
   }
 
@@ -26,27 +27,31 @@ class LoginForm extends Component {
   }
 
   onSubmit = (event) => {
-    const auth = this.props.logIn(this.state.data);
-
     event.preventDefault();
 
-    if (auth.status === 'OK') {
-      this.setState({
-        errors: []
+    this.setState({ fetching: true });
+
+    this.props.logIn(this.state.data)
+      .then((response) => {
+        if (response.status === 'OK') {
+          this.setState({
+            fetching: false,
+            errors: []
+          });
+          this.props.history.push('/profile');
+        }
+      })
+      .catch((response) => {
+        this.setState({
+          fetching: false,
+          errors: response.errors
+        });
       });
-      this.props.history.push('/profile');
-
-      return;
-    }
-
-    this.setState({
-      errors: auth.errors
-    });
   }
 
   render() {
     const { username, password } = this.state.data;
-    const { errors } = this.state;
+    const { errors, fetching } = this.state;
 
     return (
       <form className={`${this.props.className} form`} onSubmit={this.onSubmit}>
@@ -73,7 +78,7 @@ class LoginForm extends Component {
           value={password}
           placeholder='Пароль'
         />
-        <button className='form__submit button' type='submit'>Войти</button>
+        <button className='form__submit button' disabled={fetching} type='submit'>Войти</button>
       </form>
     );
   }

@@ -8,6 +8,7 @@ import Home from '../../pages/Home/Home';
 import Login from '../../pages/Login/Login';
 import News from '../../pages/News/News';
 import Profile from '../../pages/Profile/Profile';
+import NotFound from '../../pages/NotFound/NotFound';
 
 // Components //
 
@@ -21,9 +22,10 @@ const App = props => (
       <div className="container">
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route path='/login' component={Login} />
           <Route path='/news' component={News} />
-          <PrivateRoute path='/profile' component={Profile} authed={props.auth.username} />
+          <PrivateRoute path='/login' component={Login} allowed={!Boolean(props.auth.username)} redirect='/profile' />
+          <PrivateRoute path='/profile' component={Profile} allowed={Boolean(props.auth.username)} redirect='/login' />
+          <Route component={NotFound} />
         </Switch>
       </div>
     </div>

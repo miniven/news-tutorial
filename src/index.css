@@ -43,3 +43,15 @@ body {
   border-color: #028ECD;
   outline: none;
 }
+
+.button:disabled {
+  color: #D5D5D5;
+  border-color: #D5D5D5;
+  cursor: default;
+}
+
+.button:disabled:hover,
+.button:disabled:focus {
+  color: #D5D5D5;
+  border-color: #D5D5D5;
+}
