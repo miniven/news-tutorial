@@ -23,23 +23,6 @@
   outline: none;
 }
 
-.form__submit {
-  padding: 10px 30px;
-  color: #03a9f4;
-  font-size: 1em;
-  font-weight: 600;
-  background-color: transparent;
-  border: 2px solid #03a9f4;
-  cursor: pointer;
-}
-
-.form__submit:hover,
-.form__submit:focus {
-  color: #028ECD;
-  border-color: #028ECD;
-  outline: none;
-}
-
 .form__errors {
   padding: 10px;
   text-align: left;

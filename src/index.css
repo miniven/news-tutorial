@@ -26,3 +26,20 @@ body {
   background-color: rgba(3, 169, 244, 0.05);
   border: 2px solid #03a9f4;
 }
+
+.button {
+  padding: 10px 30px;
+  color: #03a9f4;
+  font-size: 1em;
+  font-weight: 600;
+  background-color: transparent;
+  border: 2px solid #03a9f4;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:focus {
+  color: #028ECD;
+  border-color: #028ECD;
+  outline: none;
+}

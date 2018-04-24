@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import './Header.css';
 
@@ -6,12 +8,33 @@ import './Header.css';
 
 import Navbar from '../Navbar/Navbar';
 
-const Header = () => (
-  <header className='header'>
-    <div className='container'>
-      <Navbar />
-    </div>
-  </header>
-);
+// Actions
 
-export default Header;
+import { logOut } from '../../actions/auth';
+
+class Header extends Component {
+  logOut = () => {
+    this.props.logOut();
+  }
+
+  render() {
+    return (
+      <header className='header'>
+        <div className='container'>
+          <div className="header__inner">
+            <Navbar />
+            {
+              this.props.auth.username && <button className='button' onClick={this.logOut}>Выйти</button>
+            }
+          </div>
+        </div>
+      </header>
+    );
+  }
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default withRouter(connect(mapStateToProps, { logOut })(Header));

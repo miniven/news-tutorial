@@ -73,7 +73,7 @@ class LoginForm extends Component {
           value={password}
           placeholder='Пароль'
         />
-        <button className='form__submit' type='submit'>Войти</button>
+        <button className='form__submit button' type='submit'>Войти</button>
       </form>
     );
   }

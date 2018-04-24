@@ -13,10 +13,6 @@
   align-items: center;
 }
 
-.nav__item--last {
-  margin-left: auto;
-}
-
 .nav__link {
   display: block;
   padding: 1.4em 1em;
