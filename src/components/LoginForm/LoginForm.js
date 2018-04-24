@@ -26,9 +26,9 @@ class LoginForm extends Component {
   }
 
   onSubmit = (event) => {
-    event.preventDefault();
-
     const auth = this.props.logIn(this.state.data);
+
+    event.preventDefault();
 
     if (auth.status === 'OK') {
       this.setState({

@@ -16,9 +16,9 @@ import App from './components/App/App';
 
 // Middlewares //
 
-import authMiddleware from './middlewares/authMiddleware';
+import thunk from 'redux-thunk';
 
-const store = createStore(rootReducer, applyMiddleware(authMiddleware));
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
