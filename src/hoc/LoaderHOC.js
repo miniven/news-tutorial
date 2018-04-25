@@ -4,7 +4,7 @@ const LoaderHOC = (isLoading) => (WrappedComponent) => {
   return class LoaderHOC extends Component {
     render() {
       return (
-        Boolean(isLoading) ? <p>Погоди-ка...<p> : <WrappedComponent {this.props} />
+        Boolean(isLoading) ? <p>Погоди-ка...</p> : <WrappedComponent {...this.props} />
       );
     }
   };
