@@ -3,9 +3,13 @@ import { connect } from 'react-redux';
 
 import './LoginForm.css';
 
+import WithLoading from '../../hoc/WithLoading/WithLoading';
+
 // Actions //
 
 import { logIn } from '../../actions/auth';
+
+const LoadingButton = WithLoading(() => <button className='form__submit button' type='submit'>Войти</button>);
 
 class LoginForm extends Component {
   state = {
@@ -78,7 +82,9 @@ class LoginForm extends Component {
           value={password}
           placeholder='Пароль'
         />
-        <button className='form__submit button' disabled={fetching} type='submit'>Войти</button>
+        <div className="form__footer">
+          <LoadingButton isLoading={fetching} />
+        </div>
       </form>
     );
   }

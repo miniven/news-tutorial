@@ -23,7 +23,7 @@ export const logIn = data => dispatch => {
         status: 'BAD',
         errors: ['Логин или пароль введены некорректно']
       });
-    }, 1000);
+    }, 1500);
   });
 };
 

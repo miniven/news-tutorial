@@ -35,3 +35,7 @@
   font-size: 0.85em;
   line-height: 1.4em;
 }
+
+.form__footer {
+  padding-top: 20px;
+}
