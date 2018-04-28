@@ -23,8 +23,8 @@ const App = props => (
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/news' component={News} />
-          <PrivateRoute path='/login' component={Login} allowed={!Boolean(props.auth.username)} redirect='/profile' />
-          <PrivateRoute path='/profile' component={Profile} allowed={Boolean(props.auth.username)} redirect='/login' />
+          <PrivateRoute path='/login' component={Login} allowed={!Boolean(props.auth.userId)} redirect='/profile' />
+          <PrivateRoute path='/profile' component={Profile} allowed={Boolean(props.auth.userId)} redirect='/login' />
           <Route component={NotFound} />
         </Switch>
       </div>

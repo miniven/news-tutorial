@@ -44,14 +44,14 @@ body {
   outline: none;
 }
 
-.button:disabled {
-  color: #D5D5D5;
-  border-color: #D5D5D5;
-  cursor: default;
+.button--red {
+  color: #ff2d21;
+  border-color: #ff2d21;
 }
 
-.button:disabled:hover,
-.button:disabled:focus {
-  color: #D5D5D5;
-  border-color: #D5D5D5;
+.button--red:hover,
+.button--red:focus {
+  color: #e23e35;
+  border-color: #e23e35;
+  outline: none;
 }

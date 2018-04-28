@@ -9,7 +9,12 @@ import WithLoading from '../../hoc/WithLoading/WithLoading';
 
 import { logIn } from '../../actions/auth';
 
-const LoadingButton = WithLoading(() => <button className='form__submit button' type='submit'>Войти</button>);
+const LoadingFooter = WithLoading(() => (
+  <div>
+    <button className='form__submit button' type='submit'>Войти</button>
+    <button className='form__submit button button--red' type='submit'>Ошибка</button>
+  </div>
+));
 
 class LoginForm extends Component {
   state = {
@@ -34,22 +39,22 @@ class LoginForm extends Component {
     event.preventDefault();
 
     this.setState({ fetching: true });
+    this.tryLogIn();
+  }
 
-    this.props.logIn(this.state.data)
-      .then((response) => {
-        if (response.status === 'OK') {
-          this.setState({
-            fetching: false,
-            errors: []
-          });
-          this.props.history.push('/profile');
+  tryLogIn = () => {
+    const { logIn, history } = this.props;
+
+    logIn(this.state.data)
+      .then((data) => {
+        if (data.status === 'ok') {
+          this.setState({ fetching: false, errors: [] });
+
+          history.push('/profile');
         }
       })
-      .catch((response) => {
-        this.setState({
-          fetching: false,
-          errors: response.errors
-        });
+      .catch((data) => {
+        this.setState({ fetching: false, errors: data.errors });
       });
   }
 
@@ -83,7 +88,7 @@ class LoginForm extends Component {
           placeholder='Пароль'
         />
         <div className="form__footer">
-          <LoadingButton isLoading={fetching} />
+          <LoadingFooter isLoading={fetching} />
         </div>
       </form>
     );

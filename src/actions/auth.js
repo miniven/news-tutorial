@@ -1,30 +1,19 @@
 import { USER_LOGGED_IN, USER_LOGGED_OUT } from '../types/auth';
+import API from '../api/';
 
 // Thunks //
 
 export const logIn = data => dispatch => {
-  return new Promise((resolve, reject) => {
-    const authData = {
-      username: 'Admin',
-      password: '12345'
-    };
-
-    setTimeout(() => {
-      if (data.username === authData.username && data.password === authData.password) {
+  return API.user.logIn(data)
+    .then(response => response.data)
+    .then(data => {
+      if (data.status === 'ok') {
         dispatch(userLoggedIn(data));
-        localStorage.setItem('auth', JSON.stringify(data));
+        localStorage.setItem('userId', data.userId);
 
-        resolve({
-          status: 'OK'
-        });
-      };
-
-      reject({
-        status: 'BAD',
-        errors: ['Логин или пароль введены некорректно']
-      });
-    }, 1500);
-  });
+        return data;
+      }
+    })
 };
 
 export const logOut = () => dispatch => {

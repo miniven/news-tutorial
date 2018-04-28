@@ -24,7 +24,7 @@ class Header extends Component {
           <div className="header__inner">
             <Navbar />
             {
-              this.props.auth.username && <button className='button' onClick={this.logOut}>Выйти</button>
+              this.props.auth.userId && <button className='button' onClick={this.logOut}>Выйти</button>
             }
           </div>
         </div>

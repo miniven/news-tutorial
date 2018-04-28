@@ -39,3 +39,7 @@
 .form__footer {
   padding-top: 20px;
 }
+
+.form__submit {
+  margin: 0 10px;
+}
