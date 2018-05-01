@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import errors from '../../api/errors';
 
 import './LoginForm.css';
 
@@ -9,21 +10,16 @@ import WithLoading from '../../hoc/WithLoading/WithLoading';
 
 import { logIn } from '../../actions/auth';
 
-const LoadingFooter = WithLoading(() => (
-  <div>
-    <button className='form__submit button' type='submit'>Войти</button>
-    <button className='form__submit button button--red' type='submit'>Ошибка</button>
-  </div>
-));
+const LoadingFooter = WithLoading(() => <button className='form__submit button' type='submit'>Войти</button>);
 
 class LoginForm extends Component {
   state = {
     data: {
-      username: '',
+      email: '',
       password: ''
     },
     fetching: false,
-    errors: []
+    errorMessage: '',
   }
 
   onInputChange = ({ target }) => {
@@ -48,36 +44,38 @@ class LoginForm extends Component {
     logIn(this.state.data)
       .then((data) => {
         if (data.status === 'ok') {
-          this.setState({ fetching: false, errors: [] });
+          this.setState({ fetching: false, errorMessage: '' });
 
           history.push('/profile');
         }
+
+        if (data.status === 'err') {
+          this.setState({ fetching: false, errorMessage: data.message });
+        }
       })
-      .catch((data) => {
-        this.setState({ fetching: false, errors: data.errors });
-      });
+      .catch(err => this.setState({ fetching: false, errorMessage: 'network_error' }));
   }
 
   render() {
-    const { username, password } = this.state.data;
-    const { errors, fetching } = this.state;
+    const { email, password } = this.state.data;
+    const { errorMessage, fetching } = this.state;
 
     return (
       <form className={`${this.props.className} form`} onSubmit={this.onSubmit}>
         {
-          errors.length > 0 && (
+          errorMessage !== '' && (
             <div className='form__errors'>
-              {errors.map((err, index) => <p className='form__errors-item' key={index}>{err}</p>)}
+              <p className='form__errors-item'>{errors[errorMessage]}</p>
             </div>
           )
         }
         <input
           className='form__input'
-          type='text'
-          name='username'
+          type='email'
+          name='email'
           onChange={this.onInputChange}
-          value={username}
-          placeholder='Логин'
+          value={email}
+          placeholder='Email'
         />
         <input
           className='form__input'

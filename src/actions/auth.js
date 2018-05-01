@@ -6,13 +6,18 @@ import API from '../api/';
 export const logIn = data => dispatch => {
   return API.user.logIn(data)
     .then(response => response.data)
-    .then(data => {
-      if (data.status === 'ok') {
-        dispatch(userLoggedIn(data));
-        localStorage.setItem('userId', data.userId);
+    .then(response => {
+      if (response.status === 'ok') {
+        const authData = {
+          ...response.data,
+          isLogged: true
+        };
 
-        return data;
+        dispatch(userLoggedIn(authData));
+        localStorage.setItem('auth', JSON.stringify(authData));
       }
+
+      return response;
     })
 };
 
