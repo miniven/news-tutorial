@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 
 import './Header.css';
 
@@ -24,7 +24,11 @@ class Header extends Component {
           <div className="header__inner">
             <Navbar />
             {
-              Boolean(this.props.auth.isLogged) && <button className='button' onClick={this.logOut}>Выйти</button>
+              Boolean(this.props.auth.isLogged) ? (
+                <button className='button' onClick={this.logOut}>Выйти</button>
+              ) : (
+                <NavLink className='button' exact to='/login'>Войти</NavLink>
+              )
             }
           </div>
         </div>

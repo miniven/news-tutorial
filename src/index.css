@@ -25,13 +25,6 @@ body {
   margin: 30px 0;
 }
 
-.section__block--white {
-  padding: 30px;
-  background-color: #ffffff;
-  border: 2px solid #efefef;
-  box-shadow: 0 30px 45px -30px rgba(0, 0, 0, 0.2);
-}
-
 .info {
   padding: 15px;
   background-color: rgba(3, 169, 244, 0.05);
@@ -43,6 +36,7 @@ body {
   color: #03a9f4;
   font-size: 1em;
   font-weight: 600;
+  text-decoration: none;
   background-color: transparent;
   border: 2px solid #03a9f4;
   cursor: pointer;
