@@ -27,13 +27,15 @@ export const logOut = () => dispatch => {
 };
 
 export const getUserData = id => dispatch => {
-  API.user.getData(id)
+  return API.user.getData(id)
     .then(response => response.data)
     .then(response => {
       if (response.status === 'ok') {
         dispatch(setUserData(response.data));
       }
-    })
+
+      return response;
+    });
 };
 
 // Action creators //

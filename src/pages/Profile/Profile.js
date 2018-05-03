@@ -11,14 +11,35 @@ import UserData from  '../../components/UserData/UserData';
 import { getUserData } from '../../actions/auth';
 
 class Profile extends Component {
+  state = {
+    fetching: true,
+    errorMessage: ''
+  }
+
   componentDidMount() {
     const { auth, getUserData } = this.props;
 
-    getUserData(auth.id);
+    getUserData(auth.id)
+      .then(response => {
+        if (response.status === 'ok') {
+          this.setState({
+            fetching: false,
+          });
+        }
+
+        if (response.status === 'err') {
+          this.setState({
+            fetching: false,
+            errorMessage: response.message
+          });
+        }
+      })
+      .catch(err => this.setState({ fetching: false, errorMessage: 'network_error' }));
   }
 
   render() {
-    const { userData } = this.props.auth;
+    const { auth } = this.props;
+    const { fetching, errorMessage } = this.state;
 
     return (
       <section className='section'>
@@ -26,7 +47,7 @@ class Profile extends Component {
 
         <p className='info'>Подтвердите ваш Email</p>
         <div className="section__block">
-          <UserData isLoading={!Boolean(userData)} data={userData} />
+          <UserData isLoading={fetching} auth={auth} errorMessage={errorMessage} />
         </div>
       </section>
     );
