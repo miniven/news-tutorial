@@ -9,7 +9,7 @@ import authorsReducer from './authorsReducer';
 const rootReducer = combineReducers({
   auth: authReducer,
   news: newsReducer,
-  authors: authorsReducer
+  authors: authorsReducer,
 });
 
 export default rootReducer;

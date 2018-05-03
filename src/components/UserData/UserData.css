@@ -1,0 +1,26 @@
+.list {
+  margin: 15px 0;
+}
+
+.list__item {
+  margin: 15px 0;
+  color: #616161;
+}
+
+.list__item:first-child {
+  margin-top: 0;
+}
+
+.list__item:last-child {
+  margin-bottom: 0;
+}
+
+.list__sublist {
+  padding-left: 20px;
+}
+
+.list__caption {
+  display: inline-block;
+  margin-right: 5px;
+  font-weight: 600;
+}

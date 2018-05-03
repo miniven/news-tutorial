@@ -1,5 +1,5 @@
 const errors = {
-	'network_error': 'Ошибка сети.',
+	'network_error': 'Сервер не доступен.',
 	'wrong_email_or_password': 'Имя пользователя или пароль введены не верно.'
 };
 

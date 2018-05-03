@@ -21,6 +21,17 @@ body {
   width: 100%;
 }
 
+.section__block {
+  margin: 30px 0;
+}
+
+.section__block--white {
+  padding: 30px;
+  background-color: #ffffff;
+  border: 2px solid #efefef;
+  box-shadow: 0 30px 45px -30px rgba(0, 0, 0, 0.2);
+}
+
 .info {
   padding: 15px;
   background-color: rgba(3, 169, 244, 0.05);

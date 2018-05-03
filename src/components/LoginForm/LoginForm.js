@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import errors from '../../api/errors';
+import { Redirect } from 'react-router-dom';
+
+// Styles //
 
 import './LoginForm.css';
+
+// Components //
 
 import WithLoading from '../../hoc/WithLoading/WithLoading';
 
@@ -10,7 +15,7 @@ import WithLoading from '../../hoc/WithLoading/WithLoading';
 
 import { logIn } from '../../actions/auth';
 
-const LoadingFooter = WithLoading(() => <button className='form__submit button' type='submit'>Войти</button>);
+const LoadingButton = WithLoading(() => <button className='form__submit button' type='submit'>Войти</button>);
 
 class LoginForm extends Component {
   state = {
@@ -20,6 +25,7 @@ class LoginForm extends Component {
     },
     fetching: false,
     errorMessage: '',
+    redirectToPrevRoute: false
   }
 
   onInputChange = ({ target }) => {
@@ -39,14 +45,16 @@ class LoginForm extends Component {
   }
 
   tryLogIn = () => {
-    const { logIn, history } = this.props;
+    const { logIn } = this.props;
 
     logIn(this.state.data)
       .then((data) => {
         if (data.status === 'ok') {
-          this.setState({ fetching: false, errorMessage: '' });
-
-          history.push('/profile');
+          this.setState({
+            fetching: false,
+            errorMessage: '',
+            redirectToPrevRoute: true
+          });
         }
 
         if (data.status === 'err') {
@@ -58,7 +66,9 @@ class LoginForm extends Component {
 
   render() {
     const { email, password } = this.state.data;
-    const { errorMessage, fetching } = this.state;
+    const { errorMessage, fetching, redirectToPrevRoute } = this.state;
+
+    if (redirectToPrevRoute) return <Redirect to='/profile' />
 
     return (
       <form className={`${this.props.className} form`} onSubmit={this.onSubmit}>
@@ -86,7 +96,7 @@ class LoginForm extends Component {
           placeholder='Пароль'
         />
         <div className="form__footer">
-          <LoadingFooter isLoading={fetching} />
+          <LoadingButton isLoading={fetching} />
         </div>
       </form>
     );

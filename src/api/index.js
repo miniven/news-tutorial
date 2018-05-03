@@ -7,6 +7,9 @@ const API = {
       	...data,
       	'content-type': 'application/json'
       });
+    },
+    getData(id) {
+      return axios.get(`https://mysterious-reef-29460.herokuapp.com/api/v1/user-info/${id}`);
     }
   }
 };
