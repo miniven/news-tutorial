@@ -11,6 +11,11 @@ const API = {
     getData(id) {
       return axios.get(`https://mysterious-reef-29460.herokuapp.com/api/v1/user-info/${id}`);
     }
+  },
+  news: {
+    getNews() {
+      return axios.get('https://mysterious-reef-29460.herokuapp.com/api/v1/news');
+    }
   }
 };
 

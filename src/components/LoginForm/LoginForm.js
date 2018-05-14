@@ -74,8 +74,8 @@ class LoginForm extends Component {
       <form className={`${this.props.className} form`} onSubmit={this.onSubmit}>
         {
           errorMessage !== '' && (
-            <div className='form__errors'>
-              <p className='form__errors-item'>{errors[errorMessage]}</p>
+            <div className='errors-box'>
+              <p className='errors-box__item'>{errors[errorMessage]}</p>
             </div>
           )
         }
