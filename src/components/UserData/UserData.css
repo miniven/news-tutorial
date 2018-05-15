@@ -24,3 +24,42 @@
   margin-right: 5px;
   font-weight: 600;
 }
+
+.list__link {
+  display: flex;
+  align-items: center;
+}
+
+.list__link-icon {
+  display: block;
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.list__link-icon--web {
+  background-image: url('/images/icons/web.png');
+}
+
+.list__link-icon--twitter {
+  background-image: url('/images/icons/twitter.svg');
+}
+
+.list__link-icon--twitch {
+  background-image: url('/images/icons/twitch.svg');
+}
+
+.list__link-icon--telegram {
+  background-image: url('/images/icons/telegram.svg');
+}
+
+.list__link-icon--youtube {
+  background-image: url('/images/icons/youtube.svg');
+}
+
+.list__link-icon--vk {
+  background-image: url('/images/icons/vk.png');
+}

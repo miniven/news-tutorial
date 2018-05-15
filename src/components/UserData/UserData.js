@@ -35,7 +35,10 @@ const UserData = (props) => {
           {
             data.social.map(item => (
               <li className='list__item' key={item.link}>
-                <a href={`https://${item.link}`} target='_blank'>{item.label}</a>
+                <a className='list__link' href={item.link} target='_blank'>
+                  <i className={`list__link-icon list__link-icon--${item.label}`}></i>
+                  {item.label}
+                </a>
               </li>
             ))
           }
