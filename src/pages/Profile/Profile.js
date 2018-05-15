@@ -45,7 +45,6 @@ class Profile extends Component {
       <section className='section'>
         <PageTitle className='section__title'>Профиль</PageTitle>
 
-        <p className='info'>Подтвердите ваш Email</p>
         <div className="section__block">
           <UserData isLoading={fetching} auth={auth} errorMessage={errorMessage} />
         </div>

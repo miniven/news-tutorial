@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import errors from '../../api/errors';
 import { Redirect } from 'react-router-dom';
 
 // Styles //
@@ -10,6 +9,7 @@ import './LoginForm.css';
 // Components //
 
 import WithLoading from '../../hoc/WithLoading/WithLoading';
+import ErrorBox from '../ErrorBox/ErrorBox';
 
 // Actions //
 
@@ -72,13 +72,7 @@ class LoginForm extends Component {
 
     return (
       <form className={`${this.props.className} form`} onSubmit={this.onSubmit}>
-        {
-          errorMessage !== '' && (
-            <div className='errors-box'>
-              <p className='errors-box__item'>{errors[errorMessage]}</p>
-            </div>
-          )
-        }
+        { errorMessage !== '' && <ErrorBox errorCode={errorMessage} /> }
         <input
           className='form__input'
           type='email'

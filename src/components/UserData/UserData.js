@@ -1,5 +1,4 @@
 import React from 'react';
-import errors from '../../api/errors';
 
 // Styles //
 
@@ -8,15 +7,14 @@ import './UserData.css';
 // Components //
 
 import WithLoading from '../../hoc/WithLoading/WithLoading';
-
-
+import ErrorBox from '../ErrorBox/ErrorBox';
 
 const UserData = (props) => {
   const { auth, errorMessage } = props;
   const { userData: data } = auth;
 
   if (errorMessage !== '') {
-    return <p>{errors[errorMessage]}</p>;
+    return <ErrorBox errorCode={errorMessage} />;
   }
 
   return (

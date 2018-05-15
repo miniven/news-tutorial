@@ -1,34 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import errors from '../../api/errors';
 
 // Components //
 
 import PageTitle from '../../components/PageTitle/PageTitle';
-import NewsItem from '../../components/NewsItem/NewsItem';
-import WithLoading from '../../hoc/WithLoading/WithLoading';
+import LoadingNews from '../../components/LoadingNews/LoadingNews';
 
 // Actions //
 
 import { getNews } from '../../actions/news';
-
-const LoadingNews = WithLoading(props => (
-  <div className='row center-xs'>
-    <div className='col-xs-12 col-md-8'>
-      {
-        props.errorMessage !== '' && (
-          <div className='errors-box'>
-            <p className='errors-box__item'>{errors[props.errorMessage]}</p>
-          </div>
-        )
-      }
-      {
-        props.news.map(item => <NewsItem key={item.id} data={item} />)
-      }
-      { props.errorMessage === '' && <p>Всего новостей: {props.news.length}</p> }
-    </div>
-  </div>
-));
 
 class News extends Component {
   state = {

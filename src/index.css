@@ -60,16 +60,3 @@ body {
   border-color: #e23e35;
   outline: none;
 }
-
-.errors-box {
-  padding: 10px;
-  text-align: left;
-  background-color: rgba(244, 67, 54, 0.05);
-  border: 2px solid #f44336;
-}
-
-.errors-box__item {
-  color: #f44336;
-  font-size: 0.85em;
-  line-height: 1.4em;
-}
