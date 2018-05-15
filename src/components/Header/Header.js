@@ -22,14 +22,18 @@ class Header extends Component {
       <header className='header'>
         <div className='container'>
           <div className="header__inner">
-            <Navbar />
-            {
-              Boolean(this.props.auth.isLogged) ? (
-                <button className='button' onClick={this.logOut}>Выйти</button>
-              ) : (
-                <NavLink className='button' exact to='/login'>Войти</NavLink>
-              )
-            }
+            <div className="header__box header__box--scrollable">
+              <Navbar />
+            </div>
+            <div className="header__box">
+              {
+                Boolean(this.props.auth.isLogged) ? (
+                  <button className='header__button button' onClick={this.logOut}>Выйти</button>
+                ) : (
+                  <NavLink className='header__button button' exact to='/login'>Войти</NavLink>
+                )
+              }
+            </div>
           </div>
         </div>
       </header>
