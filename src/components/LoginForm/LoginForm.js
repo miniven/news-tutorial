@@ -40,8 +40,10 @@ class LoginForm extends Component {
   onSubmit = (event) => {
     event.preventDefault();
 
-    this.setState({ fetching: true });
-    this.tryLogIn();
+    if (!this.state.fetching) {
+      this.setState({ fetching: true });
+      this.tryLogIn();
+    }
   }
 
   tryLogIn = () => {
