@@ -19,6 +19,14 @@ class Profile extends Component {
   componentDidMount() {
     const { auth, getUserData } = this.props;
 
+    if (auth.userData) {
+      this.setState({
+        fetching: false,
+      });
+
+      return;
+    }
+
     getUserData(auth.id)
       .then(response => {
         if (response.status === 'ok') {
@@ -35,6 +43,7 @@ class Profile extends Component {
         }
       })
       .catch(err => this.setState({ fetching: false, errorMessage: 'network_error' }));
+    
   }
 
   render() {

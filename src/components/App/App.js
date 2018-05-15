@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -15,25 +15,41 @@ import NotFound from '../../pages/NotFound/NotFound';
 import Header from '../Header/Header';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
-const App = props => (
-  <Router>
-    <div>
-      <Header />
-      <div className="container">
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/news' component={News} />
-          <PrivateRoute path='/login' component={Login} allowed={!Boolean(props.auth.isLogged)} redirect='/profile' />
-          <PrivateRoute path='/profile' component={Profile} allowed={Boolean(props.auth.isLogged)} redirect='/login' />
-          <Route component={NotFound} />
-        </Switch>
-      </div>
-    </div>
-  </Router>
-);
+// Actions //
+
+import { userLoggedIn } from '../../actions/auth';
+
+class App extends Component {
+  componentWillMount() {
+    const authData = JSON.parse(localStorage.getItem('auth'));
+
+    if (authData) {
+      this.props.userLoggedIn(authData);
+    }
+  }
+
+  render() {
+    return (
+      <Router>
+        <div>
+          <Header />
+          <div className="container">
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route path='/news' component={News} />
+              <PrivateRoute path='/login' component={Login} allowed={!Boolean(this.props.auth.isLogged)} redirect='/profile' />
+              <PrivateRoute path='/profile' component={Profile} allowed={Boolean(this.props.auth.isLogged)} redirect='/login' />
+              <Route component={NotFound} />
+            </Switch>
+          </div>
+        </div>
+      </Router>
+    )
+  }
+};
 
 const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, { userLoggedIn })(App);
