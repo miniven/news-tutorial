@@ -4,7 +4,7 @@ import errors from '../../api/errors';
 // Components
 
 import NewsItem from '../NewsItem/NewsItem';
-import WithLoading from '../../hoc/WithLoading/WithLoading';
+import WithTemplate from '../../hoc/WithTemplate/WithTemplate';
 
 const LoadingNews = props => (
   <div className='row center-xs'>
@@ -24,4 +24,4 @@ const LoadingNews = props => (
   </div>
 );
 
-export default WithLoading(LoadingNews);
+export default WithTemplate(LoadingNews);

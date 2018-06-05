@@ -1,15 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Loader from '../../components/Loader/Loader';
 
-const WithLoading = (WrappedComponent) => {
-  return class WithLoadingComponent extends Component {
-    render() {
-      return (
-        Boolean(this.props.isLoading) ? <Loader /> : <WrappedComponent {...this.props} />
-      );
-    }
-  };
-};
+const WithLoading = WrappedComponent => props => Boolean(props.isLoading) ? <Loader /> : <WrappedComponent {...props} />;
 
 export default WithLoading;
