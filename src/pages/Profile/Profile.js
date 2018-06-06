@@ -8,24 +8,22 @@ import UserData from  '../../components/UserData/UserData';
 
 // Actions //
 
-import { getUserData } from '../../actions/auth';
+import { getUserData } from '../../actions/user';
 
 class Profile extends Component {
   componentDidMount() {
-    const { auth, getUserData } = this.props;
-    console.log('getting data');
-    getUserData(auth.data.id)
+    const { id, getUserData } = this.props;
+    getUserData(id);
   }
 
   render() {
-    const { fetching, errorMessage, data } = this.props.auth;
+    const { fetching, errorMessage, data } = this.props.user;
 
     return (
       <section className='section'>
         <PageTitle className='section__title'>Профиль</PageTitle>
 
         <div className="section__block">
-          { console.log(fetching) }
           <UserData isLoading={fetching} auth={data} errorMessage={errorMessage} />
         </div>
       </section>
@@ -34,7 +32,8 @@ class Profile extends Component {
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  id: state.auth.data.id,
+  user: state.user,
 });
 
 export default connect(mapStateToProps, { getUserData })(Profile);
