@@ -11,29 +11,18 @@ import LoadingNews from '../../components/LoadingNews/LoadingNews';
 import { getNews } from '../../actions/news';
 
 class News extends Component {
-  state = {
-    fetching: true,
-    errorMessage: ''
-  }
-
   componentDidMount() {
-    this.props.getNews()
-      .then(response => {
-        if (response.status === 'ok') {
-          this.setState({ fetching: false, errorMessage: '' });
-        }
-      })
-      .catch(err => this.setState({ fetching: false, errorMessage: 'network_error' }));
+    this.props.getNews();
   }
 
   render() {
-    const { fetching, errorMessage } = this.state;
+    const { fetching, error } = this.props.news;
 
     return (
       <section className='section'>
         <PageTitle className='section__title'>Новости</PageTitle>
 
-        <LoadingNews isLoading={fetching} {...this.props} errorMessage={errorMessage} />
+        <LoadingNews isLoading={fetching} {...this.props} errorMessage={error} />
       </section>
     )
   }
