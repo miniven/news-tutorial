@@ -20,9 +20,9 @@
 
 .template__text {
   width: 50%;
-  height: 15px;
+  height: 12px;
   margin-bottom: 7px;
-  background-color: #F0F0F0;
+  background-color: #F8F8F8;
   animation: Pulse 1s infinite;
 }
 

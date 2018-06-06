@@ -28,11 +28,8 @@ class News extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    news: state.news,
-    authors: state.authors
-  };
-};
+const mapStateToProps = (state) => ({
+  news: state.news,
+});
 
 export default connect(mapStateToProps, { getNews })(News);

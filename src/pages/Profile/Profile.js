@@ -11,51 +11,22 @@ import UserData from  '../../components/UserData/UserData';
 import { getUserData } from '../../actions/auth';
 
 class Profile extends Component {
-  state = {
-    fetching: true,
-    errorMessage: ''
-  }
-
   componentDidMount() {
     const { auth, getUserData } = this.props;
-
-    if (auth.userData) {
-      this.setState({
-        fetching: false,
-      });
-
-      return;
-    }
-
-    getUserData(auth.id)
-      .then(response => {
-        if (response.status === 'ok') {
-          this.setState({
-            fetching: false,
-          });
-        }
-
-        if (response.status === 'err') {
-          this.setState({
-            fetching: false,
-            errorMessage: response.message
-          });
-        }
-      })
-      .catch(err => this.setState({ fetching: false, errorMessage: 'network_error' }));
-    
+    console.log('getting data');
+    getUserData(auth.data.id)
   }
 
   render() {
-    const { auth } = this.props;
-    const { fetching, errorMessage } = this.state;
+    const { fetching, errorMessage, data } = this.props.auth;
 
     return (
       <section className='section'>
         <PageTitle className='section__title'>Профиль</PageTitle>
 
         <div className="section__block">
-          <UserData isLoading={fetching} auth={auth} errorMessage={errorMessage} />
+          { console.log(fetching) }
+          <UserData isLoading={fetching} auth={data} errorMessage={errorMessage} />
         </div>
       </section>
     );

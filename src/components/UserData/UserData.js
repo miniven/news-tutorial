@@ -10,10 +10,9 @@ import WithLoading from '../../hoc/WithLoading/WithLoading';
 import ErrorBox from '../ErrorBox/ErrorBox';
 
 const UserData = (props) => {
-  const { auth, errorMessage } = props;
-  const { userData: data } = auth;
+  const { auth: data, errorMessage } = props;
 
-  if (errorMessage !== '') {
+  if (errorMessage) {
     return <ErrorBox errorCode={errorMessage} />;
   }
 

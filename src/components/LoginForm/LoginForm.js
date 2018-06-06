@@ -23,8 +23,6 @@ class LoginForm extends Component {
       email: '',
       password: ''
     },
-    fetching: false,
-    errorMessage: '',
     redirectToPrevRoute: false
   }
 
@@ -40,8 +38,7 @@ class LoginForm extends Component {
   onSubmit = (event) => {
     event.preventDefault();
 
-    if (!this.state.fetching) {
-      this.setState({ fetching: true });
+    if (!this.props.auth.fetching) {
       this.tryLogIn();
     }
   }
@@ -52,29 +49,20 @@ class LoginForm extends Component {
     logIn(this.state.data)
       .then((data) => {
         if (data.status === 'ok') {
-          this.setState({
-            fetching: false,
-            errorMessage: '',
-            redirectToPrevRoute: true
-          });
+          this.setState({ redirectToPrevRoute: true });
         }
-
-        if (data.status === 'err') {
-          this.setState({ fetching: false, errorMessage: data.message });
-        }
-      })
-      .catch(err => this.setState({ fetching: false, errorMessage: 'network_error' }));
+      });
   }
 
   render() {
     const { email, password } = this.state.data;
-    const { errorMessage, fetching, redirectToPrevRoute } = this.state;
+    const { errorMessage, fetching, redirectToPrevRoute } = this.props.auth;
 
     if (redirectToPrevRoute) return <Redirect to='/profile' />
 
     return (
       <form className={`${this.props.className} form`} onSubmit={this.onSubmit}>
-        { errorMessage !== '' && <ErrorBox errorCode={errorMessage} /> }
+        { errorMessage && <ErrorBox errorCode={errorMessage} /> }
         <input
           className='form__input'
           type='email'
@@ -99,4 +87,8 @@ class LoginForm extends Component {
   }
 };
 
-export default connect(null, { logIn })(LoginForm);
+const mapStateToProps = state => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logIn })(LoginForm);
