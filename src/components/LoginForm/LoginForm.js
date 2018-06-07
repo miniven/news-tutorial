@@ -8,8 +8,8 @@ import './LoginForm.css';
 
 // Components //
 
-import WithLoading from '../../hoc/WithLoading/WithLoading';
-import ErrorBox from '../ErrorBox/ErrorBox';
+import WithLoading from '~/hoc/WithLoading/WithLoading';
+import ErrorBox from '~/components/ErrorBox/ErrorBox';
 
 // Actions //
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import errors from '../../api/errors';
+import errors from '~/api/errors';
 
 // Components
 
-import NewsItem from '../NewsItem/NewsItem';
-import WithTemplate from '../../hoc/WithTemplate/WithTemplate';
+import NewsItem from '~/components/NewsItem/NewsItem';
+import WithTemplate from '~/hoc/WithTemplate/WithTemplate';
 
 const LoadingNews = props => (
   <div className='row center-xs'>

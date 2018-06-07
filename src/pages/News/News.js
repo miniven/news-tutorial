@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 // Components //
 
-import PageTitle from '../../components/PageTitle/PageTitle';
-import LoadingNews from '../../components/LoadingNews/LoadingNews';
+import PageTitle from '~/components/PageTitle/PageTitle';
+import LoadingNews from '~/components/LoadingNews/LoadingNews';
 
 // Actions //
 
-import { getNews } from '../../actions/news';
+import { getNews } from '~/actions/news';
 
 class News extends Component {
   componentDidMount() {

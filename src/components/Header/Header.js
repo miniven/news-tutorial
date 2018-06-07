@@ -6,11 +6,11 @@ import './Header.css';
 
 // Components //
 
-import Navbar from '../Navbar/Navbar';
+import Navbar from '~/components/Navbar/Navbar';
 
 // Actions
 
-import { logOut } from '../../actions/auth';
+import { logOut } from '~/actions/auth';
 
 class Header extends Component {
   logOut = () => {

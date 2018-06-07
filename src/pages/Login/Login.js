@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 // Components //
 
-import PageTitle from '../../components/PageTitle/PageTitle';
-import LoginForm from '../../components/LoginForm/LoginForm';
+import PageTitle from '~/components/PageTitle/PageTitle';
+import LoginForm from '~/components/LoginForm/LoginForm';
 
 export default class Login extends Component {
   render() {

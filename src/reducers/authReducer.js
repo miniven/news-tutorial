@@ -1,4 +1,4 @@
-import { AUTH_LOGGED_IN, AUTH_LOGGED_OUT, FETCH_AUTH, FETCH_AUTH_SUCCESS, FETCH_AUTH_FAILED } from '../types/auth';
+import { AUTH_LOGGED_IN, AUTH_LOGGED_OUT, FETCH_AUTH, FETCH_AUTH_SUCCESS, FETCH_AUTH_FAILED } from '~/types/auth';
 
 const authReducer = (state = { data: {}, fetching: null, error: null }, { type, data, error }) => {
   switch (type) {

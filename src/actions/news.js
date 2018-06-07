@@ -1,5 +1,5 @@
-import { SET_NEWS, FETCH_DATA, FETCH_DATA_SUCCESS, FETCH_DATA_FAILED } from '../types/news';
-import API from '../api/';
+import { SET_NEWS, FETCH_DATA, FETCH_DATA_SUCCESS, FETCH_DATA_FAILED } from '~/types/news';
+import API from '~/api/';
 
 export const getNews = () => dispatch => {
   dispatch(fetchData());

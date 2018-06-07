@@ -2,7 +2,7 @@ import React from 'react';
 
 // Components //
 
-import PageTitle from '../../components/PageTitle/PageTitle';
+import PageTitle from '~/components/PageTitle/PageTitle';
 
 const NotFound = () => (
   <section className='section'>

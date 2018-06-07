@@ -13,7 +13,7 @@ import './index.css';
 
 // Components //
 
-import App from './components/App/App';
+import App from '~/components/App/App';
 
 // Middlewares //
 

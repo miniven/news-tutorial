@@ -1,4 +1,4 @@
-import { SET_NEWS, FETCH_DATA, FETCH_DATA_SUCCESS, FETCH_DATA_FAILED } from '../types/news';
+import { SET_NEWS, FETCH_DATA, FETCH_DATA_SUCCESS, FETCH_DATA_FAILED } from '~/types/news';
 
 // Data //
 

@@ -1,5 +1,5 @@
-import { AUTH_LOGGED_IN, AUTH_LOGGED_OUT, FETCH_AUTH, FETCH_AUTH_SUCCESS, FETCH_AUTH_FAILED } from '../types/auth';
-import API from '../api/';
+import { AUTH_LOGGED_IN, AUTH_LOGGED_OUT, FETCH_AUTH, FETCH_AUTH_SUCCESS, FETCH_AUTH_FAILED } from '~/types/auth';
+import API from '~/api/';
 
 // Thunks //
 

@@ -1,5 +1,5 @@
-import { SET_USER_DATA, FETCH_USER, FETCH_USER_SUCCESS, FETCH_USER_FAILED } from '../types/user';
-import API from '../api/';
+import { SET_USER_DATA, FETCH_USER, FETCH_USER_SUCCESS, FETCH_USER_FAILED } from '~/types/user';
+import API from '~/api/';
 
 export const getUserData = id => dispatch => {
   dispatch(fetchUserData());

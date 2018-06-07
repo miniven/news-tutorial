@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 // Components //
 
-import PageTitle from '../../components/PageTitle/PageTitle';
-import UserData from  '../../components/UserData/UserData';
+import PageTitle from '~/components/PageTitle/PageTitle';
+import UserData from  '~/components/UserData/UserData';
 
 // Actions //
 
-import { getUserData } from '../../actions/user';
+import { getUserData } from '~/actions/user';
 
 class Profile extends Component {
   componentDidMount() {

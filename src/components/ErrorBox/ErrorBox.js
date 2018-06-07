@@ -1,5 +1,5 @@
 import React from 'react';
-import errors from '../../api/errors';
+import errors from '~/api/errors';
 
 // Styles
 

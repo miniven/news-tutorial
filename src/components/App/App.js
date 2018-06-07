@@ -4,20 +4,20 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Pages //
 
-import Home from '../../pages/Home/Home';
-import Login from '../../pages/Login/Login';
-import News from '../../pages/News/News';
-import Profile from '../../pages/Profile/Profile';
-import NotFound from '../../pages/NotFound/NotFound';
+import Home from '~/pages/Home/Home';
+import Login from '~/pages/Login/Login';
+import News from '~/pages/News/News';
+import Profile from '~/pages/Profile/Profile';
+import NotFound from '~/pages/NotFound/NotFound';
 
 // Components //
 
-import Header from '../Header/Header';
-import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import Header from '~/components/Header/Header';
+import PrivateRoute from '~/components/PrivateRoute/PrivateRoute';
 
 // Actions //
 
-import { userLoggedIn } from '../../actions/auth';
+import { userLoggedIn } from '~/actions/auth';
 
 class App extends Component {
   componentWillMount() {
