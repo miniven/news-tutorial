@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import errors from '~/api/errors';
 
 // Components
@@ -6,22 +7,31 @@ import errors from '~/api/errors';
 import NewsItem from '~/components/NewsItem/NewsItem';
 import WithTemplate from '~/hoc/WithTemplate/WithTemplate';
 
-const LoadingNews = props => (
+const LoadingNews = ({ errorMessage, news }) => (
   <div className='row center-xs'>
     <div className='col-xs-12 col-md-8'>
       {
-        props.errorMessage && (
+        errorMessage && (
           <div className='errors-box'>
-            <p className='errors-box__item'>{errors[props.errorMessage]}</p>
+            <p className='errors-box__item'>{errors[errorMessage]}</p>
           </div>
         )
       }
       {
-        props.news.data.map(item => <NewsItem key={item.id} data={item} />)
+        news.data.map(item => <NewsItem key={item.id} data={item} />)
       }
-      { !props.errorMessage && <p>Всего новостей: {props.news.data.length}</p> }
+      { !errorMessage && <p>Всего новостей: {news.data.length}</p> }
     </div>
   </div>
 );
+
+LoadingNews.propTypes = {
+  errorMessage: PropTypes.string,
+  news: PropTypes.shape({
+    data: PropTypes.arrayOf(
+      PropTypes.shape({ id: PropTypes.number.isRequired })
+    ),
+  }).isRequired,
+};
 
 export default WithTemplate(LoadingNews);

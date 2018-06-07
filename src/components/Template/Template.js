@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Styles //
+
 import './Template.css';
 
 const Template = () => (

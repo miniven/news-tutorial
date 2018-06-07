@@ -1,9 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+// Styles //
 
 import './PageTitle.css';
 
-const PageTitle = props => (
-  <h1 className={`${props.className} title`}>{props.children}</h1>
+const PageTitle = ({ className, children }) => (
+  <h1 className={`${className ? className : ''} title`}>{children}</h1>
 );
+
+PageTitle.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.string,
+  ]).isRequired,
+};
 
 export default PageTitle;

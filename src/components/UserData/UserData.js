@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Styles //
 
@@ -9,9 +10,7 @@ import './UserData.css';
 import WithLoading from '~/hoc/WithLoading/WithLoading';
 import ErrorBox from '~/components/ErrorBox/ErrorBox';
 
-const UserData = (props) => {
-  const { auth: data, errorMessage } = props;
-
+const UserData = ({ auth: data, errorMessage }) => {
   if (errorMessage) {
     return <ErrorBox errorCode={errorMessage} />;
   }
@@ -45,6 +44,20 @@ const UserData = (props) => {
       </li>
     </ul>
   );
-}
+};
+
+UserData.propTypes = {
+  errorMessage: PropTypes.string,
+  auth: PropTypes.shape({
+    city: PropTypes.string.isRequired,
+    languages: PropTypes.arrayOf(PropTypes.string).isRequired,
+    social: PropTypes.arrayOf(
+      PropTypes.shape({
+        link: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+  }),
+};
 
 export default WithLoading(UserData);

@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+// Styles //
 
 import './NewsItem.css';
 
@@ -10,5 +13,12 @@ const NewsItem = ({ data }) => (
     </div>
   </article>
 );
+
+NewsItem.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default NewsItem;

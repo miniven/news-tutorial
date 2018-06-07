@@ -2,7 +2,7 @@ import { SET_NEWS, FETCH_DATA, FETCH_DATA_SUCCESS, FETCH_DATA_FAILED } from '~/t
 
 // Data //
 
-const newsReducer = (state = { data: [], fetching: null, loaded: null, error: null }, { type, data, error }) => {
+const newsReducer = (state = { data: [], fetching: false, error: null }, { type, data, error }) => {
   switch (type) {
     case SET_NEWS:
       return {

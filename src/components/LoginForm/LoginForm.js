@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 // Styles //
 
@@ -56,13 +57,13 @@ class LoginForm extends Component {
 
   render() {
     const { email, password } = this.state.data;
-    const { errorMessage, fetching, redirectToPrevRoute } = this.props.auth;
+    const { error, fetching } = this.props.auth;
 
-    if (redirectToPrevRoute) return <Redirect to='/profile' />
+    if (this.state.redirectToPrevRoute) return <Redirect to='/profile' />
 
     return (
-      <form className={`${this.props.className} form`} onSubmit={this.onSubmit}>
-        { errorMessage && <ErrorBox errorCode={errorMessage} /> }
+      <form className={`${this.props.className ? this.props.className : ''} form`} onSubmit={this.onSubmit}>
+        { error && <ErrorBox errorCode={error} /> }
         <input
           className='form__input'
           type='email'
@@ -85,6 +86,15 @@ class LoginForm extends Component {
       </form>
     );
   }
+};
+
+LoginForm.propTypes = {
+  className: PropTypes.string,
+  logIn: PropTypes.func.isRequired,
+  auth: PropTypes.shape({
+    error: PropTypes.string,
+    fetching: PropTypes.bool.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = state => ({

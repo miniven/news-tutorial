@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 // Components //
 
@@ -26,7 +27,15 @@ class News extends Component {
       </section>
     )
   }
-}
+};
+
+News.propTypes = {
+  getNews: PropTypes.func.isRequired,
+  news: PropTypes.shape({
+    fetching: PropTypes.bool.isRequired,
+    error: PropTypes.string,
+  }).isRequired,
+};
 
 const mapStateToProps = (state) => ({
   news: state.news,

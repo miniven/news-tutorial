@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 // Components //
 
@@ -17,18 +18,28 @@ class Profile extends Component {
   }
 
   render() {
-    const { fetching, errorMessage, data } = this.props.user;
+    const { fetching, error, data } = this.props.user;
 
     return (
       <section className='section'>
         <PageTitle className='section__title'>Профиль</PageTitle>
 
         <div className="section__block">
-          <UserData isLoading={fetching} auth={data} errorMessage={errorMessage} />
+          <UserData isLoading={fetching} auth={data} errorMessage={error} />
         </div>
       </section>
     );
   }
+};
+
+Profile.propTypes = {
+  getUserData: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  user: PropTypes.shape({
+    data: PropTypes.object.isRequired,
+    fetching: PropTypes.bool.isRequired,
+    error: PropTypes.string,
+  }).isRequired,
 };
 
 const mapStateToProps = state => ({

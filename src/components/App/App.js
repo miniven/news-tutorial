@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 // Pages //
 
@@ -46,6 +47,14 @@ class App extends Component {
       </Router>
     )
   }
+};
+
+App.propTypes = {
+  userLoggedIn: PropTypes.func.isRequired,
+  auth: PropTypes.shape({
+    data: PropTypes.object.isRequired,
+    isLogged: PropTypes.bool.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = state => ({
