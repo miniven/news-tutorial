@@ -14,7 +14,7 @@ import ErrorBox from '~/components/ErrorBox/ErrorBox';
 
 // Actions //
 
-import { logIn } from '../../actions/auth';
+import { logIn, setSuccessResult } from '../../actions/auth';
 
 const LoadingButton = WithLoading(() => <button className='form__submit button' type='submit'>Войти</button>);
 
@@ -65,10 +65,10 @@ class LoginForm extends Component {
   }
 
   render() {
+    if (this.state.redirectToPrevRoute) return <Redirect to='/profile' />
+
     const { email, password } = this.state.data;
     const { error, fetching } = this.props.auth;
-
-    if (this.state.redirectToPrevRoute) return <Redirect to='/profile' />
 
     return (
       <form className={`${this.props.className ? this.props.className : ''} form`} onSubmit={this.onSubmit}>
@@ -79,6 +79,7 @@ class LoginForm extends Component {
           name='email'
           onChange={this.onInputChange}
           value={email}
+          autoComplete="off"
           placeholder='Email'
         />
         <input
@@ -110,4 +111,4 @@ const mapStateToProps = state => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { logIn })(LoginForm);
+export default connect(mapStateToProps, { logIn, setSuccessResult })(LoginForm);
