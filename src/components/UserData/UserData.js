@@ -10,7 +10,7 @@ import './UserData.css';
 import WithLoading from '~/hoc/WithLoading/WithLoading';
 import ErrorBox from '~/components/ErrorBox/ErrorBox';
 
-const UserData = ({ auth: data, errorMessage }) => {
+const UserData = ({ data, social, errorMessage }) => {
   if (errorMessage) {
     return <ErrorBox errorCode={errorMessage} />;
   }
@@ -31,7 +31,7 @@ const UserData = ({ auth: data, errorMessage }) => {
         <p className='list__caption'>Ссылки:</p>
         <ul className='list__sublist list'>
           {
-            data.social.map(item => (
+            social.map(item => (
               <li className='list__item' key={item.link}>
                 <a className='list__link' href={item.link} target='_blank'>
                   <i className={`list__link-icon list__link-icon--${item.label}`}></i>
@@ -51,13 +51,13 @@ UserData.propTypes = {
   auth: PropTypes.shape({
     city: PropTypes.string.isRequired,
     languages: PropTypes.arrayOf(PropTypes.string).isRequired,
-    social: PropTypes.arrayOf(
-      PropTypes.shape({
-        link: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-      })
-    ).isRequired,
   }),
+  social: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default WithLoading(UserData);

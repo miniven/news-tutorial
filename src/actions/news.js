@@ -4,7 +4,7 @@ import API from '~/api/';
 export const getNews = () => dispatch => {
   dispatch(fetchData());
 
-  API.news.getNews()
+  return API.news.getNews()
     .then(response => response.data)
     .then(response => {
       if (response.status === 'ok') {

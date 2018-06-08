@@ -11,6 +11,10 @@ import UserData from  '~/components/UserData/UserData';
 
 import { getUserData } from '~/actions/user';
 
+// Selectors //
+
+import { getSortedSocial } from '~/reducers/userReducer';
+
 class Profile extends Component {
   componentDidMount() {
     const { id, getUserData } = this.props;
@@ -18,14 +22,15 @@ class Profile extends Component {
   }
 
   render() {
-    const { fetching, error, data } = this.props.user;
+    const { user, social } = this.props;
+    const { fetching, error, data } = user;
 
     return (
       <section className='section'>
         <PageTitle className='section__title'>Профиль</PageTitle>
 
         <div className="section__block">
-          <UserData isLoading={fetching} auth={data} errorMessage={error} />
+          <UserData isLoading={fetching} data={data} social={social} errorMessage={error} />
         </div>
       </section>
     );
@@ -40,11 +45,18 @@ Profile.propTypes = {
     fetching: PropTypes.bool.isRequired,
     error: PropTypes.string,
   }).isRequired,
+  social: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 const mapStateToProps = state => ({
   id: state.auth.data.id,
   user: state.user,
+  social: getSortedSocial(state.user.data.social),
 });
 
 export default connect(mapStateToProps, { getUserData })(Profile);

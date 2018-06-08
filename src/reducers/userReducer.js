@@ -29,4 +29,14 @@ const userReducer = (state = { data: {}, fetching: true, error: null }, { type, 
   }
 };
 
+export const getSortedSocial = (items) => {
+  if (!items) {
+    return null;
+  }
+
+  return [...items].sort((current, next) => {
+    return current.label === 'web' ? -1 : 1;
+  });
+};
+
 export default userReducer;
