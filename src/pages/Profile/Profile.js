@@ -13,7 +13,7 @@ import { getUserData } from '~/actions/user';
 
 // Selectors //
 
-import { getSortedSocial } from '~/reducers/userReducer';
+import { getSortedSocial, getUserID } from '~/reducers/userReducer';
 
 class Profile extends Component {
   componentDidMount() {
@@ -54,9 +54,9 @@ Profile.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  id: state.auth.data.id,
+  id: getUserID(state),
   user: state.user,
-  social: getSortedSocial(state.user.data.social),
+  social: getSortedSocial(state),
 });
 
 export default connect(mapStateToProps, { getUserData })(Profile);

@@ -51,7 +51,16 @@ class LoginForm extends Component {
       .then((data) => {
         if (data.status === 'ok') {
           this.setState({ redirectToPrevRoute: true });
+
+          return;
         }
+
+        this.setState({
+          data: {
+            ...this.state.data,
+            password: '',
+          },
+        });
       });
   }
 

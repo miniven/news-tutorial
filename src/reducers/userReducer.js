@@ -29,14 +29,22 @@ const userReducer = (state = { data: {}, fetching: true, error: null }, { type, 
   }
 };
 
-export const getSortedSocial = (items) => {
-  if (!items) {
+export const getSortedSocial = (state) => {
+  const { social } = state.user.data;
+
+  if (!social) {
     return null;
   }
 
-  return [...items].sort((current, next) => {
+  return [...social].sort((current, next) => {
     return current.label === 'web' ? -1 : 1;
   });
 };
+
+export const getUserID = (state) => {
+  const { id } = state.auth.data;
+
+  return id !== undefined ? id : null;
+}
 
 export default userReducer;
