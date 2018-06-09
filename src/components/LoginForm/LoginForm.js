@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // Styles //
@@ -22,9 +21,8 @@ class LoginForm extends Component {
   state = {
     data: {
       email: '',
-      password: ''
+      password: '',
     },
-    redirectToPrevRoute: false
   }
 
   onInputChange = ({ target }) => {
@@ -49,24 +47,18 @@ class LoginForm extends Component {
 
     logIn(this.state.data)
       .then((data) => {
-        if (data.status === 'ok') {
-          this.setState({ redirectToPrevRoute: true });
-
-          return;
+        if (data.status !== 'ok') {
+          this.setState({
+            data: {
+              ...this.state.data,
+              password: '',
+            },
+          });
         }
-
-        this.setState({
-          data: {
-            ...this.state.data,
-            password: '',
-          },
-        });
       });
   }
 
   render() {
-    if (this.state.redirectToPrevRoute) return <Redirect to='/profile' />
-
     const { email, password } = this.state.data;
     const { error, fetching } = this.props.auth;
 
