@@ -13,7 +13,7 @@ import ErrorBox from '~/components/ErrorBox/ErrorBox';
 
 // Actions //
 
-import { logIn, setSuccessResult } from '../../actions/auth';
+import { logIn } from '../../actions/auth';
 
 const LoadingButton = WithLoading(() => <button className='form__submit button' type='submit'>Войти</button>);
 
@@ -103,4 +103,4 @@ const mapStateToProps = state => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { logIn, setSuccessResult })(LoginForm);
+export default connect(mapStateToProps, { logIn })(LoginForm);
